@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WordForge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">W</span>
+          <div>
+            <h1>WordForge</h1>
+            <p>Neon wordplay, locally saved.</p>
+          </div>
+        </div>
+
+        <form class="profile-form" id="profile-form">
+          <label for="profile-name">Profile</label>
+          <div class="profile-row">
+            <input id="profile-name" maxlength="24" autocomplete="off" placeholder="Create a profile">
+            <button type="submit">Create</button>
+          </div>
+        </form>
+
+        <div class="profile-picker">
+          <label for="profile-select">Switch player</label>
+          <select id="profile-select"></select>
+        </div>
+
+        <div class="stats-panel">
+          <div class="stat-grid">
+            <div><strong id="stat-played">0</strong><span>Played</span></div>
+            <div><strong id="stat-win-rate">0%</strong><span>Win rate</span></div>
+            <div><strong id="stat-streak">0</strong><span>Streak</span></div>
+            <div><strong id="stat-max-streak">0</strong><span>Best</span></div>
+          </div>
+          <div class="distribution" id="distribution"></div>
+        </div>
+      </section>
+
+      <section class="game-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Unlimited mode</p>
+            <h2 id="player-heading">Choose a profile</h2>
+          </div>
+          <button class="ghost-button" id="new-game">New game</button>
+        </header>
+
+        <div class="status" id="status">Create a profile to begin.</div>
+
+        <div class="board-wrap">
+          <div class="board" id="board" aria-label="Wordle board"></div>
+        </div>
+
+        <section class="result-panel" id="result-panel" aria-live="polite" hidden>
+          <div class="emoji-burst" id="emoji-burst"></div>
+          <div>
+            <p class="result-kicker" id="result-kicker"></p>
+            <h3 id="result-title"></h3>
+            <p id="result-copy"></p>
+          </div>
+          <img id="result-gif" alt="">
+        </section>
+
+        <div class="keyboard" id="keyboard"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
